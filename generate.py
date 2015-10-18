@@ -1,4 +1,6 @@
 import random
+import textwrap
+
 
 b = open('./data/buzzfeed.txt', 'r')
 t = open('./data/tractatus.txt', 'r')
@@ -18,26 +20,31 @@ for line in b:
     if offset != -1:
         buzzfeed.append(line[offset+6:])
 
-# for i in range(10):
-#     tractatus_ch = random.choice(tractatus)
-#     buzzfeed_ch = random.choice(buzzfeed).lower()
-#     combined = tractatus_ch + buzzfeed_ch
-#     print(combined)
+for i in range(1):
+    tractatus_ch = random.choice(tractatus)
+    buzzfeed_ch = random.choice(buzzfeed)#.lower()
+    combined = tractatus_ch + buzzfeed_ch
+    print("\n" + textwrap.fill(combined, 60) + "\n")
 
 # can 
+b = open('./data/buzzfeed.txt', 'r')
+t = open('./data/tractatus.txt', 'r')
+
+buzzfeed = list()
+tractatus = list()
 
 for line in t:
     offset = line.lower().find(" can ")
-    if offset != -1:
+    if offset != -1 and line.find(" there can ") == -1:
         tractatus.append(line[:offset+1])
 
 for line in b:
     offset = line.lower().find(" can ")
     if offset != -1:
-        buzzfeed.append(line[offset+4:])
+        buzzfeed.append(line[offset+1:])
 
-for i in range(2):
+for i in range(1):
     tractatus_ch = random.choice(tractatus)
-    buzzfeed_ch = random.choice(buzzfeed).lower()
+    buzzfeed_ch = random.choice(buzzfeed)#.lower()
     combined = tractatus_ch + buzzfeed_ch[:-1] + "."
-    print("\n" + combined + "\n")
+    print("\n" + textwrap.fill(combined, 60) + "\n")
